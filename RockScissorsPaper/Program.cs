@@ -18,11 +18,11 @@ namespace RockScissorsPaper
         static string[] firstvalues(string[] values)
         {
             int even = values.Length;
-            if (even % 2 == 1)
+            if (even % 2 == 1&& even!=1)
             { return values; }
             else
             {
-                Console.WriteLine("Количество вариантов должно быть нечетным, введите новые значения");
+                Console.WriteLine("Количество вариантов должно быть нечетным(больше одного значения), введите новые значения.");
                 string stroka = Console.ReadLine();
                 values = stroka.Split(" ");
                 if (values.Length % 2 == 0)
@@ -36,12 +36,7 @@ namespace RockScissorsPaper
         {
             int shapesCount = enteredShapes.Length;
             Array.Sort(enteredShapes);
-            if (shapesCount == 1)
-            {
-                Console.WriteLine("Количество должно быть больше 1");
-                string[] qwe = new string[3];
-                EnterNewValues(qwe);
-            }
+           
             for (int i = 0; i < shapesCount - 1; i++)
             {
                 
@@ -69,16 +64,6 @@ namespace RockScissorsPaper
             checkvalues(NewShapes);
 
             return;
-
-            //Console.WriteLine("Количество вариантов должно быть нечетным, введите новые значения");
-            //string stroka = Console.ReadLine();
-            //NewShapes = stroka.Split(" ");
-            //if (NewShapes.Length % 2 == 0)
-            //{
-            //    firstvalues(NewShapes);
-            //}
-            //return NewShapes;
-
         }
 
 
@@ -130,7 +115,6 @@ namespace RockScissorsPaper
         {
             string[] newlist = firstvalues(args);
             int shapesCount = newlist.Length;
-
             checkvalues(newlist);
             Random rand = new Random();
             int PC_answer = rand.Next(0, newlist.Length);
@@ -170,22 +154,22 @@ namespace RockScissorsPaper
 
                 if (PC_answer == choosenOne)
                 {
-                    answer1="Draw";
+                    answer1="Результат: ничья.";
                     break;
                 }
                 if (newlist[choosenOne] == WinCondition[i])
                 {
-                    answer1 = "Win";
+                    answer1 = "Результат: Вы победили.";
                     break;
                 }
                 else 
                 {
-                    answer1 = "Lose";
+                    answer1 = "Результат: Вы проиграли";
 
                 }
             }
 
-            Console.WriteLine(answer1 + "\n Введите Y если хотите продолжить.");
+            Console.WriteLine(answer1 + "\nВведите Y если хотите продолжить.");
             if (Console.ReadLine() == "Y" || Console.ReadLine() == "y")
             { Main(args); }
 
