@@ -8,13 +8,7 @@ namespace RockScissorsPaper
 {
     class Program
     {
-        private static int GenerateRandomInt32Value(RandomNumberGenerator randomNumberGenerator)
-        {
-            var RandomBytes = new byte[16]; // 16 bytes = 128 bits 
-            randomNumberGenerator.GetBytes(RandomBytes);
-            var randomInt32Value = BitConverter.ToInt32(RandomBytes, 0);
-            return randomInt32Value;
-        }
+      
         static string[] firstvalues(string[] values)
         {
             int even = values.Length;
